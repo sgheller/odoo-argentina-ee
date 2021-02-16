@@ -1,6 +1,7 @@
 from odoo import models
 
-
+# Todo en Enterprise
+'''
 class AccountReport(models.AbstractModel):
     _inherit = 'account.report'
 
@@ -46,3 +47,4 @@ class AccountReport(models.AbstractModel):
 
             action_read['context'] = context
         return action_read
+'''

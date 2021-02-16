@@ -6,7 +6,9 @@
         <field name="arch" type="xml">
             <field name="kanban_dashboard" position="after">
                 <field name="tax_settlement"/>
+                <!-- Enterprise
                 <field name="settlement_financial_report_id"/>
+                -->
             </field>
             <field name="json_activity_data" position="before">
                 <t t-if="record.tax_settlement.raw_value" t-call="JournalBodyTaxSettlement"/>
@@ -31,6 +33,7 @@
                             </div>
                         </div>
                         <!-- lo mostramos si no mostamos el de reporte -->
+                        <!-- Enterprise
                         <div class="row" t-if="!record.settlement_financial_report_id.raw_value">
                             <div class="col-6">
                                 <a role="menuitem" type="object" name="open_action" context="{'accounts_balance': True}">
@@ -51,6 +54,7 @@
                                 <span><t t-esc="dashboard.report_position"/></span>
                             </div>
                         </div>
+                        -->
                         <div class="row">
                             <div class="col-6">
                                 <a role="menuitem" type="object" name="open_action" context="{'debt_balance': True}">

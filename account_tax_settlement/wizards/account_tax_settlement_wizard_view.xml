@@ -7,8 +7,11 @@
             <form string="Tax Settlement">
                 <field name="select_journal" invisible="1"/>
                 <field name="company_id" invisible="1"/>
+                <!-- Enterprise
                 <field name="report_id" invisible="1"/>
+                -->
                 <field name="move_line_ids" invisible="1"/>
+                <!-- Enterprise
                 <p attrs="{'invisible': ['|', ('report_id', '=', False), ('message', '!=', False)]}">
                     Se va a crear un asiento de liquidación con la información del reporte. Desea continuar?
                 </p>
@@ -16,6 +19,8 @@
                     <field name="message" readonly="1"/>
                 </p>
                 <p attrs="{'invisible': [('report_id', '!=', False)]}">
+                -->
+                <p>
                     Se va a crear un asiento de liquidación para los apuntes seleccionados. Desea continuar?
                 </p>
                 <group>

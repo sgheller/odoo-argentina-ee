@@ -46,10 +46,15 @@ class AccountJournal(models.Model):
         'res.partner',
         'Partner de liquidación',
     )
+    
+    ## Solo para Enterprise
+    '''
     settlement_financial_report_id = fields.Many2one(
         'account.financial.html.report',
         'Informe de liquidación',
     )
+    '''
+    
     # lo hacemos con etiquetas ya que se puede resolver con datos en plan
     # de cuentas sin incorporar lógica
     # TODO, por ahora son solo con tags de impuestos pero podrimoas dejar

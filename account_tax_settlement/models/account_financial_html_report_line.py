@@ -2,6 +2,8 @@ from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
 from odoo.osv import expression
 
+# Corresponde todo a Enterprise
+'''
 
 class AccountFinancialReport(models.Model):
     _inherit = "account.financial.html.report"
@@ -117,3 +119,4 @@ class AccountFinancialReportLine(models.Model):
         help='Si se eligió "Nuevo Apunte Contable", para la nueva línea, '
         'Se va a buscar una cuenta con esta etiqueta de cuenta',
     )
+'''

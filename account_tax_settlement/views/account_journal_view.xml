@@ -11,7 +11,9 @@
                 <!-- <field name="settlement_file_template" attrs="{'invisible': [('tax_settlement', '=', False)]}"/> -->
                 <field name="settlement_tax" attrs="{'invisible': [('tax_settlement', '=', False)]}"/>
                 <field name="settlement_partner_id" attrs="{'invisible': [('tax_settlement', '=', False)], 'required': [('tax_settlement', '!=', False)]}"/>
+                <!-- Enterprise
                 <field name="settlement_financial_report_id" attrs="{'invisible': [('tax_settlement', '=', False)]}"/>
+                -->
                 <field name="settlement_account_tag_ids" attrs="{'invisible': [('tax_settlement', '=', False)]}" widget="many2many_tags"/>
             </field>
             <field name="default_debit_account_id" position="attributes">

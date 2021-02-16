@@ -25,9 +25,11 @@ class AccountTaxSettlementWizard(models.TransientModel):
         'account.journal',
         string='Journal',
     )
+    ''' Enterprise
     report_id = fields.Many2one(
         'account.financial.html.report',
     )
+    '''
     move_line_ids = fields.Many2many(
         'account.move.line',
     )
@@ -43,7 +45,8 @@ class AccountTaxSettlementWizard(models.TransientModel):
     @api.model
     def default_get(self, fields):
         res = super(AccountTaxSettlementWizard, self).default_get(fields)
-
+        
+        ''' Enterprise
         report = self.env['account.financial.html.report'].browse(
             self._context.get('from_report_id'))
 
@@ -52,13 +55,15 @@ class AccountTaxSettlementWizard(models.TransientModel):
             raise ValidationError(_(
                 'No "from_report_id" key on context and report not called '
                 'from journal entries'))
-
+        '''
+        
         # solo si es del tipo reporte se devuelven estos campos
-        if not report:
-            active_ids = self._context.get('active_ids')
-            res.update({'move_line_ids': active_ids})
-            return res
+        # if not report:   (enterprise)
+        active_ids = self._context.get('active_ids')
+        res.update({'move_line_ids': active_ids})
+        return res
 
+        ''' Enterprise
         company_ids = self._context.get('context', {}).get('company_ids')
 
         if not company_ids or len(company_ids) != 1:
@@ -78,15 +83,19 @@ class AccountTaxSettlementWizard(models.TransientModel):
             # 'select_journal': not bool(journal) and False or True,
         })
         return res
-
+        '''
+        
     def confirm(self):
         self.ensure_one()
         self = self.with_context(entry_date=self.date)
+        ''' Enterprise
         if self.report_id:
             move = self.report_id.create_tax_settlement_entry(
                 self.settlement_journal_id)
+
         else:
-            move = self.move_line_ids.create_tax_settlement_entry()
+        '''
+        move = self.move_line_ids.create_tax_settlement_entry()
         return {
             'name': _('Journal Entries'),
             'view_type': 'form',
